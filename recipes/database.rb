@@ -15,12 +15,12 @@ end
 mysql_service 'huginn-mysql' do
   port '3306'
   version '5.5'
-  initial_root_password 'changeme'
+  initial_root_password 'password'
   action [:create, :start]
 end
 
 # Create a mysql database
-mysql_database 'huginn' do
+mysql_database 'huginn_production' do
   connection(
     :host     => '127.0.0.1',
     :username => 'root',
@@ -33,7 +33,7 @@ end
 mysql_connection_info = {
   :host     => '127.0.0.1',
   :username => 'root',
-  :password => 'changeme'
+  :password => 'password'
   #node['mysql']['server_root_password']
 }
 
@@ -41,7 +41,7 @@ mysql_connection_info = {
 mysql_database_user 'huginn' do
   connection mysql_connection_info
   password 'super_secret'
-  database_name 'huginn'
+  database_name 'huginn_production'
   host '%'
   privileges [:select,:update,:insert]
   require_ssl true
