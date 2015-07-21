@@ -1,6 +1,8 @@
 include_recipe 'apt'
 include_recipe 'build-essential'
 
+include_recipe 'huginn::database'
+
 user "huginn" do
   system true
   home "/home/huginn"
