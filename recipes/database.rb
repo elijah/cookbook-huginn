@@ -6,7 +6,7 @@ mysql_client 'default' do
   action :create
 end
 
-chef_gem "mysql2"
+#chef_gem "mysql2"
 
 mysql2_chef_gem 'default' do
   action :install
