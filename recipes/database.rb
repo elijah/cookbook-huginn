@@ -8,6 +8,10 @@ end
 
 chef_gem "mysql2"
 
+mysql2_chef_gem 'default' do
+  action :install
+end
+
 mysql_service 'huginn-mysql' do
   port '3306'
   version '5.5'
