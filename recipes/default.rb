@@ -61,6 +61,7 @@ deploy "/home/huginn" do
   symlinks "log" => "log"
   symlink_before_migrate({})
   rollback_on_error true
+  not_if `git ls-remote http://github.com/cantino/huginn |grep master| awk '{print $1}'` == `cd /home/huginn/current; git log -1 --format='%H'`
   notifies :enable, "service[nginx]"
   notifies :start, "service[nginx]"
   before_symlink do
